@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>AquaSight — About Us</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+    <style>
+        :root {
+            --primary: #06b6d4; /* Cyan */
+            --secondary: #8b5cf6; /* Violet */
+            --bg-dark: #0f172a; /* Slate 900 */
+            --bg-card: rgba(30, 41, 59, 0.7); /* Slate 800 with transparency */
+            --glass-border: rgba(100, 116, 139, 0.2);
+            --text-light: #f1f5f9; /* Slate 100 */
+            --text-muted: #94a3b8; /* Slate 400 */
+            --glow: 0 0 20px rgba(6, 182, 212, 0.3);
+            --radius: 16px;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        body {
+            margin: 0;
+            font-family: "Inter", sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            animation: fadeIn 0.5s ease-out;
+
+            /* --- ADDED: Prevent Text Selection/Copy --- */
+            -webkit-user-select: none; /* Safari */
+            -ms-user-select: none; /* IE 10 and IE 11 */
+            user-select: none; /* Standard syntax */
+        }
+
+        /* Navbar */
+        nav {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        nav .brand {
+            font-weight: 800;
+            font-size: 1.5rem;
+            background: linear-gradient(45deg, var(--primary), #67e8f9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        nav ul { list-style: none; display: flex; gap: 2rem; margin:0; padding:0; }
+        nav ul li a { text-decoration: none; color: var(--text-muted); font-weight: 500; transition: color 0.3s ease; }
+        nav ul li a:hover { color: var(--primary); }
+
+        /* Main Content Wrapper */
+        .content-wrapper {
+            flex-grow: 1;
+        }
+
+        /* Hero Section */
+        .about-hero {
+            text-align: center;
+            padding: 6rem 2rem;
+            background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1552892237-7a1b4913f8b0?q=80&w=2070');
+            background-size: cover;
+            background-position: center;
+        }
+        .about-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            animation: slideUp 0.6s ease-out;
+        }
+        .about-hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            animation: slideUp 0.6s ease-out 0.1s both;
+        }
+        
+        /* Pillars Section */
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: -4rem auto 4rem auto; /* Overlap with hero */
+            padding: 0 2rem;
+            position: relative;
+            z-index: 5;
+        }
+        .pillar-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius);
+            border: 1px solid var(--glass-border);
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            animation: slideUp 0.6s ease-out forwards;
+        }
+        .pillars .pillar-card:nth-child(1) { animation-delay: 0.3s; }
+        .pillars .pillar-card:nth-child(2) { animation-delay: 0.4s; }
+        .pillars .pillar-card:nth-child(3) { animation-delay: 0.5s; }
+        .pillar-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+            border-color: var(--primary);
+        }
+        .pillar-card .icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        .pillar-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .pillar-card p {
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+        .pillar-card ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+            text-align: left;
+            color: var(--text-muted);
+        }
+        .pillar-card ul li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .pillar-card ul li:last-child {
+            border-bottom: none;
+        }
+        .pillar-card ul i {
+            color: var(--primary);
+            margin-right: 0.75rem;
+        }
+
+
+        /* Impact Section */
+        .impact {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 2rem;
+            text-align: center;
+        }
+        .impact h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .impact p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        .impact strong {
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        footer {
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: auto;
+            background: #0c1222; /* Slightly different from main bg */
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="brand">AquaSight</div>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+        </ul>
+    </nav>
+
+    <div class="content-wrapper">
+        <header class="about-hero">
+            <h1>Our Vision for Water Security</h1>
+            <p>We are leveraging cutting-edge Artificial Intelligence to build a future where every community in India has access to safe, sustainable groundwater resources.</p>
+        </header>
+
+        <section class="pillars">
+            <div class="pillar-card">
+                <div class="icon"><i class="fas fa-crosshairs"></i></div>
+                <h2>Our Mission</h2>
+                <p>To empower farmers, communities, and government bodies with accurate, data-driven insights for water well placement. We aim to reduce the financial risk of failed drilling attempts and promote the sustainable management of India's vital groundwater.</p>
+            </div>
+            <div class="pillar-card">
+                <div class="icon"><i class="fas fa-brain"></i></div>
+                <h2>Our Technology</h2>
+                <p>AquaSight utilizes a suite of machine learning models trained to analyze complex geological patterns. Our AI processes vast datasets to provide clear, actionable predictions on:</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Site Suitability</li>
+                    <li><i class="fas fa-check"></i> Expected Water Depth & Yield</li>
+                    <li><i class="fas fa-check"></i> Optimal Drilling Methods</li>
+                    <li><i class="fas fa-check"></i> Regional Water Quality</li>
+                </ul>
+            </div>
+            <div class="pillar-card">
+                <div class="icon"><i class="fas fa-database"></i></div>
+                <h2>Data-Driven Insights</h2>
+                <p>Our predictions are built upon a robust foundation of national data from the <strong>Central Ground Water Board (CGWB)</strong> under the NAQUIM programme, including:</p>
+                <ul>
+                    <li><i class="fas fa-layer-group"></i> Lithology & Geophysical Logs</li>
+                    <li><i class="fas fa-map-marked-alt"></i> Aquifer Maps</li>
+                    <li><i class="fas fa-water"></i> Water Level & Quality Data</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="impact">
+            <h2>Supporting National Goals</h2>
+            <p>
+                This project is proudly aligned with the goals of the <strong>Ministry of Jal Shakti</strong> and directly supports the <strong>United Nations' Sustainable Development Goal 6 (SDG 6)</strong>: ensuring access to clean water and sanitation for all. By providing reliable intelligence, AquaSight contributes to a water-secure future for India.
+            </p>
+        </section>
+    </div>
+
+    <footer>
+        © 2025 AquaSight | Ministry of Jal Shakti • SDG 6 — Clean Water & Sanitation
+    </footer>
+
+    <script>
+        document.addEventListener('copy', (e) => {
+            e.preventDefault();
+        });
+    </script>
+</body>
+</html>
